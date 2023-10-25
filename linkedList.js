@@ -38,4 +38,12 @@ export default class LinkedList {
     if (this.head !== null) return this.lengthOfList;
     else return;
   }
+
+  getHead() {
+    return this.head;
+  }
+
+  getTail() {
+    return this.tail;
+  }
 }
