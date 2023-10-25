@@ -28,4 +28,9 @@ export default class LinkedList {
       this.head = newNode;
     }
   }
+
+  size() {
+    if (this.head !== null) return this.lengthOfList;
+    else return;
+  }
 }
