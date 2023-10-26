@@ -26,11 +26,13 @@ export default class LinkedList {
       this.head = newNode;
       this.tail = newNode;
       this.lengthOfList++;
+      return newNode;
     } else {
       const newNode = new Node(value);
       newNode.nextNode = this.head;
       this.head = newNode;
       this.lengthOfList++;
+      return newNode;
     }
   }
 
@@ -52,30 +54,26 @@ export default class LinkedList {
     let i = 0;
     while (current !== null && i <= index) {
       if (index === i) {
-        console.log(current);
         return current;
       } else if (index !== i) {
         i++;
         current = current.nextNode;
         continue;
       }
+      return current;
     }
   }
-}
 
-//   atIndex(index) {
-//     let tmp = this.head;
-//     let i = 0;
-//     while (tmp !== null && i <= index) {
-//       if (index === 0 && index == i) {
-//         console.log(tmp);
-//         return tmp;
-//       }
-//       i++;
-//       tmp = tmp.nextNode;
-//       if (i === index) {
-//         console.log(tmp);
-//         return tmp;
-//       }
-//     }
-//   }
+  pop() {
+    let current = this.atIndex(this.lengthOfList - 2);
+    if (!this.head) return null;
+    if (this.head.nextNode === null) {
+      this.head === null;
+    }
+
+    this.tail = current;
+    this.tail.nextNode = null;
+    this.lengthOfList--;
+    console.log(this.lengthOfList);
+  }
+}
