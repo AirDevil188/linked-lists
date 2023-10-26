@@ -46,4 +46,36 @@ export default class LinkedList {
   getTail() {
     return this.tail;
   }
+
+  atIndex(index) {
+    let current = this.head;
+    let i = 0;
+    while (current !== null && i <= index) {
+      if (index === i) {
+        console.log(current);
+        return current;
+      } else if (index !== i) {
+        i++;
+        current = current.nextNode;
+        continue;
+      }
+    }
+  }
 }
+
+//   atIndex(index) {
+//     let tmp = this.head;
+//     let i = 0;
+//     while (tmp !== null && i <= index) {
+//       if (index === 0 && index == i) {
+//         console.log(tmp);
+//         return tmp;
+//       }
+//       i++;
+//       tmp = tmp.nextNode;
+//       if (i === index) {
+//         console.log(tmp);
+//         return tmp;
+//       }
+//     }
+//   }
