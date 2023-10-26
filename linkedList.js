@@ -26,13 +26,11 @@ export default class LinkedList {
       this.head = newNode;
       this.tail = newNode;
       this.lengthOfList++;
-      return newNode;
     } else {
       const newNode = new Node(value);
       newNode.nextNode = this.head;
       this.head = newNode;
       this.lengthOfList++;
-      return newNode;
     }
   }
 
@@ -42,10 +40,12 @@ export default class LinkedList {
   }
 
   getHead() {
+    if (!this.head) return null;
     return this.head;
   }
 
   getTail() {
+    if (!this.head) return null;
     return this.tail;
   }
 
@@ -53,27 +53,26 @@ export default class LinkedList {
     let current = this.head;
     let i = 0;
     while (current !== null && i <= index) {
-      if (index === i) {
-        return current;
-      } else if (index !== i) {
-        i++;
-        current = current.nextNode;
-        continue;
-      }
-      return current;
+      // if this condition is true, the function will end
+      if (index === i) return current;
+
+      // if it's not true, then we'll just continue looping to the next node
+      i++;
+      current = current.nextNode;
     }
   }
 
   pop() {
-    let current = this.atIndex(this.lengthOfList - 2);
     if (!this.head) return null;
-    if (this.head.nextNode === null) {
-      this.head === null;
+    if (this.size() === 1) {
+      this.lengthOfList--;
+      this.head = null;
+      this.tail = null;
+    } else {
+      let secondToTheLastNode = this.atIndex(this.lengthOfList - 2);
+      this.tail = secondToTheLastNode;
+      this.tail.nextNode = null;
+      this.lengthOfList--;
     }
-
-    this.tail = current;
-    this.tail.nextNode = null;
-    this.lengthOfList--;
-    console.log(this.lengthOfList);
   }
 }
