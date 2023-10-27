@@ -89,4 +89,23 @@ export default class LinkedList {
       else return;
     }
   }
+
+  find(value) {
+    let current = this.head;
+    let i = 0;
+    while (
+      current !== null &&
+      current.nextNode !== null &&
+      current.value !== value
+    ) {
+      current = current.nextNode;
+      i++;
+    }
+    if (
+      current === null ||
+      (current.nextNode == null && current.value !== value)
+    )
+      return console.log(null);
+    return console.log(i);
+  }
 }
