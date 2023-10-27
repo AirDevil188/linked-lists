@@ -75,4 +75,18 @@ export default class LinkedList {
       this.lengthOfList--;
     }
   }
+
+  contains(value) {
+    let current = this.head;
+    while (current !== null) {
+      if (this.head.value == value || this.tail.value === value)
+        return console.log(true);
+      else if (current.nextNode !== null && current.nextNode.value == value)
+        return console.log(true);
+      else if (this.head.value !== value || this.tail.value !== value)
+        return console.log(false);
+      else if (current.nextNode.value !== value) return console.log(false);
+      else return;
+    }
+  }
 }
