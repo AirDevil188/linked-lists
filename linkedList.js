@@ -53,10 +53,7 @@ export default class LinkedList {
     let current = this.head;
     let i = 0;
     while (current !== null && i <= index) {
-      // if this condition is true, the function will end
       if (index === i) return current;
-
-      // if it's not true, then we'll just continue looping to the next node
       i++;
       current = current.nextNode;
     }
@@ -75,37 +72,35 @@ export default class LinkedList {
       this.lengthOfList--;
     }
   }
-
   contains(value) {
     let current = this.head;
-    while (current !== null) {
-      if (this.head.value == value || this.tail.value === value)
-        return console.log(true);
-      else if (current.nextNode !== null && current.nextNode.value == value)
-        return console.log(true);
-      else if (this.head.value !== value || this.tail.value !== value)
-        return console.log(false);
-      else if (current.nextNode.value !== value) return console.log(false);
-      else return;
+    while (current != null) {
+      if (current.value === value) return true;
+      current = current.nextNode;
     }
+    return false;
   }
 
   find(value) {
+    if (!this.head) return null;
     let current = this.head;
     let i = 0;
-    while (
-      current !== null &&
-      current.nextNode !== null &&
-      current.value !== value
-    ) {
+    while (current.nextNode !== null && current.value !== value) {
       current = current.nextNode;
       i++;
     }
-    if (
-      current === null ||
-      (current.nextNode == null && current.value !== value)
-    )
-      return console.log(null);
-    return console.log(i);
+    if (current.value !== value) return null;
+    return i;
+  }
+
+  toString() {
+    if (!this.head) return "null";
+    let string = "";
+    let current = this.head;
+    while (current.nextNode !== null) {
+      string = `${string} (${current.value}) ->`;
+      current = current.nextNode;
+    }
+    return `${string} (${current.value}) -> (null))`;
   }
 }
